@@ -17,32 +17,29 @@
 ## Inherit from generic products, most specific first
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-## Product API level
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
-## Inscreen Fingerprint HAL
-TARGET_HAVE_FOD := true
+## Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 ## Inherit from d2x device
 $(call inherit-product, device/samsung/d2x/device.mk)
+
+## Inherit some common crDroid stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 ## Boot Animation
 TARGET_BOOTANIMATION_HALF_RES := true
 TARGET_SCREEN_HEIGHT := 3040
 TARGET_SCREEN_WIDTH := 1440
-
-## Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-## Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+TARGET_HAVE_FOD := true
+TARGET_BOOT_ANIMATION_RES := 1080
 
 ## Device identifier, this must come after all inclusions
 PRODUCT_NAME := lineage_d2x
 PRODUCT_DEVICE := d2x
-PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-N976B
-PRODUCT_MANUFACTURER := samsung
+PRODUCT_BRAND := Samsung
+PRODUCT_MODEL := Galaxy Note10+ 5G
+PRODUCT_MANUFACTURER := Samsung
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
